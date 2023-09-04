@@ -22,10 +22,10 @@ const StyledUnlockedButton = styled(Button)({
 });
 
 // eslint-disable-next-line react/prop-types
-const UnlockedButton = ({ onClick, disabled}) => {
+const UnlockedButton = ({ onClick, disabled, running, experimentEnded}) => {
   return (
     <StyledUnlockedButton fullWidth variant="contained" onClick={onClick} disabled={disabled}>
-      Empezar cuenta regresiva
+      {experimentEnded ? "El experimento terminó" : running ? "..." : "Empezar cuenta regresiva"}
     </StyledUnlockedButton>
   );
 };

@@ -20,6 +20,12 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
+import Alert from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
+import Collapse from '@mui/material/Collapse';
+
 // Inicializo el estado del array usersTable
 const initialState = { usersTable: getItem("usernames") || [] };
 
@@ -52,7 +58,7 @@ function App() {
 
   const [currentUser, setCurrentUser] = useState(getItem("currentUser") || "");
   const [usernames, setUsernames] = useState(getItem("usernames") || []);
-  const [running, setRunning] = useState(getItem("running") === "true" || null);
+  const [running, setRunning] = useState(getItem("running") === "true" || false);
 
   const [nextClick, setNextClick] = useState(getItem("nextClick") || null);
 
@@ -63,6 +69,8 @@ function App() {
   const [redUsers, setRedUsers] = useState(getItem("redUsers") || 0);
 
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  const [open, setOpen] = useState(true);
 
   // useEffect para almacenar los datos del array usersTable
   useEffect(() => {
@@ -102,7 +110,10 @@ function App() {
     }
     if (getItem("running") === true) {
       setRunning(getItem("running"));
+    } else {
+      setItem("running", false);
     }
+    
   }, []);
 
   //Funcion para el Countdown
@@ -223,7 +234,6 @@ function App() {
       "Usuario Actual": currentUser,
       "Color actual": userColor,
       "Proximo Numero": nextClick,
-      "Usuarios para la tabla": state.usersTable,
     });
   }
 
@@ -262,7 +272,24 @@ function App() {
   ];
 
   return (
-    <Box>
+    <Stack>
+      <Collapse in={open}>
+        <Alert variant="outlined" severity="info" action={
+              <IconButton
+                aria-label="close"
+                color="inherit"
+                size="small"
+                onClick={() => {
+                  setOpen(false);
+                }}
+              >
+                <CloseIcon fontSize="inherit" />
+              </IconButton>
+            } sx={{color: '#fff'}}>
+          Desbloquea el botón y empezá el countdown y los usuarios no dejarán que llegue a 0!
+        </Alert>
+      </Collapse>
+      
       <div>
         <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
           <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -276,7 +303,7 @@ function App() {
         <Grid container spacing={2} sx={{ width: "inherit" }}>
           <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
             {isUnlocked ? (
-              <UnlockedButton onClick={handleClicked} disabled={isClicked} />
+              <UnlockedButton onClick={handleClicked} disabled={isClicked} running={running} experimentEnded={countButton === 0}/>
             ) : (
               <BlockedButton
                 onClick={handleUnlockClick}
@@ -327,7 +354,7 @@ function App() {
           </TableBody>
         </Table>
       </TableContainer>
-    </Box>
+    </Stack>
   );
 }
 
