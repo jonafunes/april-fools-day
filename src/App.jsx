@@ -262,7 +262,7 @@ function App() {
   ];
 
   return (
-    <>
+    <Box>
       <div>
         <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
           <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -327,7 +327,7 @@ function App() {
           </TableBody>
         </Table>
       </TableContainer>
-    </>
+    </Box>
   );
 }
 

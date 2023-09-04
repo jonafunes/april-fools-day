@@ -4,7 +4,8 @@ import { styled } from "@mui/material/styles";
 import LockIcon from "@mui/icons-material/Lock";
 
 const ButtonBlocked = styled(Button)({
-  width: "400px",
+  maxWidth: "400px",
+  minWidth: "100px",
   height: "100px",
   backgroundColor: "#585758",
   "&:hover": {
@@ -17,7 +18,7 @@ const ButtonBlocked = styled(Button)({
 // eslint-disable-next-line react/prop-types
 const BlockedButton = ({ onClick, disabled }) => {
   return (
-    <ButtonBlocked variant="contained" onClick={onClick} disabled={disabled}>
+    <ButtonBlocked fullWidth variant="contained" onClick={onClick} disabled={disabled}>
       <LockIcon sx={{ fontSize: "4rem" }}></LockIcon>
     </ButtonBlocked>
   );

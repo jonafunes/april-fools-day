@@ -2,7 +2,8 @@ import { Button } from "@mui/material";
 import { styled } from '@mui/material/styles';
 
 const StyledUnlockedButton = styled(Button)({
-  width: "400px",
+  maxWidth: "400px",
+  minWidth: "100px",
   height: "100px",
   backgroundColor: "#585758",
   '&:hover': {
@@ -23,7 +24,7 @@ const StyledUnlockedButton = styled(Button)({
 // eslint-disable-next-line react/prop-types
 const UnlockedButton = ({ onClick, disabled}) => {
   return (
-    <StyledUnlockedButton variant="contained" onClick={onClick} disabled={disabled}>
+    <StyledUnlockedButton fullWidth variant="contained" onClick={onClick} disabled={disabled}>
       Empezar cuenta regresiva
     </StyledUnlockedButton>
   );
