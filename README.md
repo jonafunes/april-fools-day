@@ -27,6 +27,9 @@ Para desarrollar este proyecto, decidí utilizar el framework Vite. Elegí Vite 
 
 Tambien podes observarlo sin descargar en: https://jonafunes.github.io/april-fools-day/
 
+## Reiniciar aplicación
+La aplicación almacena datos localmente, para que si se cierra la ventana pueda retomar cuando se vuelva a abrir. Con fines de prueba se pueden borrar los datos desde las herramientas del explorador o esperar a que termine el experimento y se renderizará un boton para limpiar los datos locales.
+
 ## Contribuir
 Si deseas contribuir a este proyecto, ¡te damos la bienvenida! Puedes realizar una bifurcación del repositorio, hacer tus mejoras y enviar una solicitud de extracción.
 

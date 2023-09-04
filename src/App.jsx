@@ -10,6 +10,7 @@ import Grid from "@mui/material/Unstable_Grid2";
 import { Typography } from "@mui/material";
 import UnlockedButton from "./components/UnlockedButton/UnlockedButton";
 import BlockedButton from "./components/BlockedButton/BlockedButton";
+import ClearButton from "./components/ClearButton/ClearButton";
 import { getItem, setItem } from "./utils/localStorage";
 
 import Table from "@mui/material/Table";
@@ -286,7 +287,7 @@ function App() {
                 <CloseIcon fontSize="inherit" />
               </IconButton>
             } sx={{color: '#fff'}}>
-          Desbloquea el botón y empezá el countdown y los usuarios no dejarán que llegue a 0!
+          Desbloquea el botón, empezá el countdown y los usuarios no dejarán que llegue a 0!
         </Alert>
       </Collapse>
       
@@ -354,6 +355,7 @@ function App() {
           </TableBody>
         </Table>
       </TableContainer>
+      {countButton === 0 && (<ClearButton/>)}
     </Stack>
   );
 }
